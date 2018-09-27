@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import FlightBookingController from './screens/controller/flight-booking-controller'
+import Store from './screens/store/flight-booking-store'
+import Action from './screens/action/flight-booking-action'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <FlightBookingController
+            store= {Store}
+            action= {Action}
+        />
       </div>
     );
   }
