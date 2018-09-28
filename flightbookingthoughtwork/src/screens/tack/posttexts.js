@@ -1,4 +1,11 @@
 export default [
+
+  {
+    id: "a-101",
+    name: "Indigo",
+
+  },
+
     {
         postId: 1,
         imgUrl: 'img/venice-placetotravel.jpg',

@@ -5,41 +5,39 @@ import MainViewProps from './model/main-view-props';
 import AppData from'./model/main-view-app-data';
 
 
-var TreeViewStore = (function () {
+let TreeViewStore = (function () {
 
-  var oComponentProps = MainViewProps;
+  let oComponentProps = MainViewProps;
 
-  var triggerChange = function () {
+  let triggerChange = function () {
     TreeViewStore.trigger('change');
   };
 
-  var _getViewData = function () {
+  let _getViewData = function () {
     /*return oComponentProps.getData();*/
   };
 
-
-
-  var _handleAllContentPostClicked = function(iPostId) {
+  let _handleAllContentPostClicked = function(iPostId) {
      let aData = oComponentProps.getPostData();
      aData.push(
          {
              postId: 2,
              imgUrl: 'img/lisbon-acampm1Flickr.jpg',
-             title: 'Mangesh',
+             title: 'Mangesh3',
              description: 'Magnificently sited on a series of hills running down to the grand Tagus River, Lisbon is one of the world’s most scenic cities.'
          }
      );
     triggerChange();
   };
 
-  var _handleHeaderLogoClicked = function () {
+  let _handleHeaderLogoClicked = function () {
     oComponentProps.setFlag(false);
     triggerChange();
   }
   return {
 
     getData: function () {
-      var data = {
+      let data = {
         appData: AppData,
         componentProps: oComponentProps
       };
