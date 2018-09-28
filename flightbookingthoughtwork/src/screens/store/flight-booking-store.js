@@ -13,10 +13,6 @@ let TreeViewStore = (function () {
     TreeViewStore.trigger('change');
   };
 
-  let _getViewData = function () {
-    /*return oComponentProps.getData();*/
-  };
-
   let _handleAllContentPostClicked = function(iPostId) {
      let aData = oComponentProps.getPostData();
      aData.push(
@@ -29,11 +25,6 @@ let TreeViewStore = (function () {
      );
     triggerChange();
   };
-
-  let _handleHeaderLogoClicked = function () {
-    oComponentProps.setFlag(false);
-    triggerChange();
-  }
   return {
 
     getData: function () {
@@ -50,17 +41,10 @@ let TreeViewStore = (function () {
       console.log(aPostData);
     },
 
-    getViewData: function () {
-      return _getViewData();
-    },
-
     handleAllContentPostClicked: function (iPostId) {
       _handleAllContentPostClicked(iPostId);
     },
 
-    handleHeaderLogoClicked: function () {
-      _handleHeaderLogoClicked();
-    }
   }
 })();
 
