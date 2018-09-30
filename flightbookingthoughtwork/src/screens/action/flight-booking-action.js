@@ -1,6 +1,6 @@
 import eventBus from'../../library/eventdispatcher/EventDispatcher.js';
 import MainViewStore from '../store/flight-booking-store';
-import {Events} from  '../view/demo-view'
+import {Events} from  '../view/filter-view'
 
 let TreeViewAction = (function () {
 

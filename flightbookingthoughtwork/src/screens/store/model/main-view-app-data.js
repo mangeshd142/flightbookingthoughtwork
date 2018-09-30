@@ -1,5 +1,5 @@
 import MockDataForView from '../../tack/mock-data-for-main-view';
-import MockDataFarPosts from '../../tack/posttexts';
+import MockDataFarPosts from '../../tack/mock-data-for-flight-booking';
 
 let TreeViewAppData = (function () {
 

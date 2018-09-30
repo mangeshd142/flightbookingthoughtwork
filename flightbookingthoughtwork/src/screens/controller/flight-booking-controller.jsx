@@ -1,71 +1,73 @@
 import React from 'react';
 import _ from 'lodash';
-import {DemoView} from '../view/demo-view'
+import {FilterView} from '../view/filter-view';
+import {FlightDetailView} from '../view/flight-detail-view';
 
-class FlightBookingController extends React.Component{
+class FlightBookingController extends React.Component {
 
-  constructor(props) {
-    super(props)
-      this.state = {
-          appData: this.getStore().getData().appData,
-          componentProps: this.getStore().getData().componentProps,
-      }
-  }
+    constructor(props) {
+        super(props)
+        this.state = {
+            appData: this.getStore().getData().appData,
+            componentProps: this.getStore().getData().componentProps,
+        }
+    }
 
-  //@Bind: Store with state
-  componentDidMount() {
-    this.getStore().bind('change', this.handleTreeViewStateChanged);
-    this.props.action.registerEvent();
-  }
+    //@Bind: Store with state
+    componentDidMount() {
+        this.getStore().bind('change', this.handleTreeViewStateChanged);
+        this.props.action.registerEvent();
+    }
 
-  componentDidUpdate() {
-  }
+    componentDidUpdate() {
+    }
 
-  componentWillMount() {
-    var aMockDataForPost = this.state.appData.getMockDataForPosts();
-    this.getStore().fetchGlobalData(aMockDataForPost);
-  }
+    componentWillMount() {
+        var aMockDataForPost = this.state.appData.getMockDataForPosts();
+        this.getStore().fetchGlobalData(aMockDataForPost);
+    }
 
-  //@UnBind: store with state
-  componentWillUnmount() {
-    this.getStore().unbind('change', this.handleTreeViewStateChanged);
-    this.props.action.deRegisterEvent();
-  }
+    //@UnBind: store with state
+    componentWillUnmount() {
+        this.getStore().unbind('change', this.handleTreeViewStateChanged);
+        this.props.action.deRegisterEvent();
+    }
 
-  //@set: state
-  handleTreeViewStateChanged =()=> {
+    //@set: state
+    handleTreeViewStateChanged = () => {
 
-    var changedState = {
-      appData: this.getStore().getData().appData,
-      componentProps: this.getStore().getData().componentProps
-    };
+        var changedState = {
+            appData: this.getStore().getData().appData,
+            componentProps: this.getStore().getData().componentProps
+        };
 
-    this.setState(changedState);
-  }
+        this.setState(changedState);
+    }
 
-  getStore =()=> {
-    return this.props.store;
-  }
+    getStore = () => {
+        return this.props.store;
+    }
 
-  render() {
+    render() {
 
-    var oComponentProps = this.state.componentProps;
-    var bViewFlag = oComponentProps.getFlag();
-    var iViewId = oComponentProps.getViewId();
-    var aPostData = oComponentProps.getPostData();
+        var oComponentProps = this.state.componentProps;
+        var aPostData = oComponentProps.getPostData();
 
-    let aDataView = [];
-    _.forEach(aPostData, function (oData) {
-        aDataView.push((<div>{oData.title}</div>))
-    });
+        return (
+            <div className="flightSearchEngineContainer">
+                <div className="header">
+                    <div className="headerText">
+                        Flight Search Engine
+                    </div>
+                </div>
+                <div className="searchContainer">
+                    <FilterView/>
+                    <FlightDetailView flights = {aPostData}/>
+                </div>
 
-    return (
-        <div>
-            {aDataView}
-            <DemoView/>
-        </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 export default FlightBookingController;

@@ -19,7 +19,7 @@ let TreeViewStore = (function () {
          {
              postId: 2,
              imgUrl: 'img/lisbon-acampm1Flickr.jpg',
-             title: 'Mangesh3',
+             name: 'Mangesh3',
              description: 'Magnificently sited on a series of hills running down to the grand Tagus River, Lisbon is one of the world’s most scenic cities.'
          }
      );

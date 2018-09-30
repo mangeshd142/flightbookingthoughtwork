@@ -1,28 +1,188 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
 }
 
 .App-title {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .App-intro {
-  font-size: large;
+    font-size: large;
+}
+
+.filterContainer {
+    height: 100%;
+    box-shadow: 1px 1px #000;
+}
+
+.filterContainer .filters {
+    margin: 4px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.filterContainer .refineFlights {
+    margin: 4px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.filterContainer .refineFlights .slider{
+    margin: 5px;
+}
+
+.filterContainer .refineFlights .slider .slider{
+    width: calc(100% - 20px) !important;
+}
+
+.filterContainer .refineFlights .minPrice{
+    margin: 5px;
+    float: left;
+}
+
+.filterContainer .refineFlights .maxPrice{
+    margin: 5px;
+    float: right;
+}
+
+.filterContainer .filters .inputContainer {
+    margin: 5px;
+}
+
+.filterContainer .filters .searchButton {
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 50px;
+}
+
+.filterContainer .filters .input {
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid;
+}
+
+.filterContainer .filters .datePicker {
+}
+
+.flightSearchEngineContainer {
+    font-size: 14px;
+}
+
+.flightSearchEngineContainer .filterHeader {
+    display: grid;
+    grid-template-columns: auto 110px;
+    padding: 5px;
+    box-shadow: 1px 1px #000;
+    overflow-y: scroll;
+}
+
+.flightSearchEngineContainer .filterHeader .route {
+    line-height: 2.5;
+}
+
+.flightSearchEngineContainer .filterHeader .scheduleDate {
+    font-size: 11px;
+    padding-top: 5px;
+}
+
+.flightSearchEngineContainer .contentData {
+    height: 455px;
+    overflow-y: scroll;
+}
+
+.flightSearchEngineContainer .header {
+    box-shadow: 0px 1px #000;
+    overflow: hidden;
+}
+
+.flightSearchEngineContainer .header .headerText {
+    float: left;
+    line-height: 37px;
+    margin-left: 5px;
+}
+
+.searchContainer {
+    display: grid;
+    grid-template-columns: 30% auto;
+    box-shadow: 1px 1px #000;
+    margin-bottom: 20px;
+}
+
+.flightDetailContainer {
+    height: 500px;
+    box-shadow: 1px 1px #000;
+    overflow: auto;
+}
+
+.contentItem {
+    width: calc(100% - 11px);
+    display: grid;
+    grid-template-columns: auto 110px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.contentItem .flightDetails {
+
+}
+
+.contentItem .flightDetails .price {
+    height: 28px;
+    font-weight: 600;
+    line-height: 2;
+}
+
+.scheduleDetails {
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 100%;
+}
+
+.property {
+    text-align: left;
+    padding-left: 5px;
+}
+
+.rightSideContainer {
+
+}
+
+.rightSideContainer .image {
+    height: 70px;
+    margin: 2px;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.rightSideContainer .bookButton {
+    height: 20px;
+    margin: 5px 2px;
+    border: 1px solid;
+    border-radius: 2px;
+    font-size: 11px;
+    line-height: 20px;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
