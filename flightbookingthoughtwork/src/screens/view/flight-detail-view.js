@@ -15,7 +15,10 @@ class FlightDetailView extends React.Component{
     getFlightdata = () => {
         let afilteredFlights = [];
         _.forEach(this.props.flights, function (oFlight) {
-           afilteredFlights.push(<ContentItemView flight = {oFlight}/>)
+           afilteredFlights.push(<ContentItemView
+               departFlight = {oFlight.departFlight}
+               returnFlight = {oFlight.returnFlight}
+           />)
         });
         return afilteredFlights;
     }

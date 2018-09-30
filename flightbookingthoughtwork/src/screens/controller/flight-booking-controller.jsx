@@ -48,10 +48,30 @@ class FlightBookingController extends React.Component {
         return this.props.store;
     }
 
-    render() {
+    getFilteredFlightData = ()=>{
+        let oComponentProps = this.state.componentProps;
+        let aDepartFlights = oComponentProps.getDepartFlights();
+        let aReturnFlights = oComponentProps.getReturnFlights();
+        let aFilteredFlights = [];
 
-        var oComponentProps = this.state.componentProps;
-        var aPostData = oComponentProps.getPostData();
+        _.forEach(aDepartFlights, function (oDepartFlight) {
+            let oReturnFlight = _.find(aReturnFlights, {companyCode: oDepartFlight.companyCode});
+            if(!_.isEmpty(oReturnFlight)){
+                aFilteredFlights.push(
+                    {
+                        departFlight: oDepartFlight,
+                        returnFlight: oReturnFlight
+                    }
+                )
+            }
+        });
+
+        return aFilteredFlights;
+
+    }
+
+    render() {
+        let aFlights = this.getFilteredFlightData();
 
         return (
             <div className="flightSearchEngineContainer">
@@ -62,7 +82,7 @@ class FlightBookingController extends React.Component {
                 </div>
                 <div className="searchContainer">
                     <FilterView/>
-                    <FlightDetailView flights = {aPostData}/>
+                    <FlightDetailView flights = {aFlights}/>
                 </div>
 
             </div>

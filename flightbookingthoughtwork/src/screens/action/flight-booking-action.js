@@ -8,19 +8,19 @@ let TreeViewAction = (function () {
   let handleAllContentPostClicked = function (oContext, iPostId) {
     MainViewStore.handleAllContentPostClicked(iPostId);
   };
-  let handleHeaderLogoClicked = function () {
-    MainViewStore.handleHeaderLogoClicked();
+  let handleSearchButtonClicked = function (oSchedule) {
+    MainViewStore.handleSearchButtonClicked(oSchedule);
   };
 
   return {
     //Register Event Listener
     registerEvent: function () {
-      eventBus.addEventListener(Events.HANDLE_ALL_CONTENT_POST_CLICKED, handleAllContentPostClicked);
+      eventBus.addEventListener(Events.HANDLE_FILTER_VIEW_SEARCH_CLICKED, handleSearchButtonClicked);
     },
 
     //De-Register Event Listener
     deRegisterEvent: function () {
-      eventBus.removeEventListener(Events.HANDLE_ALL_CONTENT_POST_CLICKED, handleAllContentPostClicked);
+      eventBus.removeEventListener(Events.HANDLE_FILTER_VIEW_SEARCH_CLICKED, handleAllContentPostClicked);
     }
   }
 })();

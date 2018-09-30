@@ -3,6 +3,8 @@ let TreeViewProps = (function () {
     let aPostData = [];
     let bFlag = false;
     let iViewId;
+    let departFlights;
+    let returnFlights;
     /**********************All Getter and Setter*************************/
     return {
         getPostData: function () {
@@ -26,6 +28,22 @@ let TreeViewProps = (function () {
 
         setViewId: function (_iViewId) {
             iViewId = _iViewId;
+        },
+
+        getDepartFlights: function () {
+            return departFlights;
+        },
+
+        setDepartFlights: function (_departFlights) {
+            departFlights = _departFlights;
+        },
+
+        getReturnFlights: function () {
+            return returnFlights;
+        },
+
+        setReturnFlights: function (_returnFlights) {
+            returnFlights = _returnFlights;
         }
 
     }

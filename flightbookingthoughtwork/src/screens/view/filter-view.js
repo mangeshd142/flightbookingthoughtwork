@@ -8,7 +8,7 @@ import { InlineDatePicker } from 'material-ui-pickers/DatePicker';
 import { Slider } from 'material-ui-slider';
 
 const Events = {
-    HANDLE_ALL_CONTENT_POST_CLICKED: 'handle_all_content_post_clicked'
+    HANDLE_FILTER_VIEW_SEARCH_CLICKED: 'HANDLE_FILTER_VIEW_SEARCH_CLICKED�'
 };
 
 
@@ -40,6 +40,10 @@ class FilterView extends React.Component{
 
     destinationCityOnChange = (oEvent) => {
         this.setState({ destinationCity: oEvent.target.value });
+    }
+
+    searchButtonClicked = () => {
+        EventBus.dispatch(Events.HANDLE_FILTER_VIEW_SEARCH_CLICKED, this.state);
     }
 
     render() {
@@ -76,7 +80,7 @@ class FilterView extends React.Component{
                     <div className="inputContainer">
                         <input className="input" placeholder="Enter Destination City" value={this.state.type}/>
                     </div>
-                    <div className="searchButton">
+                    <div className="searchButton" onClick={this.searchButtonClicked}>
                         Search
                     </div>
                 </div>
