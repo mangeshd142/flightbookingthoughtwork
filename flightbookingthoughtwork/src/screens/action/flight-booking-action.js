@@ -12,10 +12,15 @@ let TreeViewAction = (function () {
     MainViewStore.handleSearchButtonClicked(oSchedule);
   };
 
+  let handleRefineValueChanged = function (iRefineValue) {
+    MainViewStore.handleRefineValueChanged(iRefineValue);
+  };
+
   return {
     //Register Event Listener
     registerEvent: function () {
       eventBus.addEventListener(Events.HANDLE_FILTER_VIEW_SEARCH_CLICKED, handleSearchButtonClicked);
+      eventBus.addEventListener(Events.HANDLE_FILTER_VIEW_REFINE_VALUE_CHANGED, handleRefineValueChanged);
     },
 
     //De-Register Event Listener

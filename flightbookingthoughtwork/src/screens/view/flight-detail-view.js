@@ -1,6 +1,7 @@
 import React from 'react';
 import EventBus from '../../library/eventdispatcher/EventDispatcher';
 import _ from 'lodash';
+import moment from 'moment';
 
 import {ContentItemView} from './content-item-view';
 
@@ -12,30 +13,39 @@ const Events = {
 class FlightDetailView extends React.Component{
 
 
-    getFlightdata = () => {
-        let afilteredFlights = [];
-        _.forEach(this.props.flights, function (oFlight) {
-           afilteredFlights.push(<ContentItemView
+    getFlightData = () => {
+        let aFilteredFlights = [];
+        _.forEach(this.props.flights, (oFlight)=> {
+           aFilteredFlights.push(<ContentItemView
                departFlight = {oFlight.departFlight}
                returnFlight = {oFlight.returnFlight}
+               flightClass = {this.props.flightClass}
            />)
         });
-        return afilteredFlights;
-    }
+        return aFilteredFlights;
+    };
 
     render() {
-        let aFlightViees = this.getFlightdata();
+        let aFlightViews = this.getFlightData();
+        let sRoute = ""
+        if(this.props.departStation){
+          sRoute = this.props.departStation+ " > " +this.props.destination;
+        }
+        sRoute = this.props.isTwoWay ? sRoute + " > "+ this.props.departStation: sRoute;
+
+        let departDate = this.props.departDate? "Depart:" +moment(this.props.departDate).format('Do MMM YYYY'):"";
+        let returnDate = this.props.returnDate? <div className="property return">{"Return:" +moment(this.props.returnDate).format('Do MMM YYYY')}</div> : null;
         return (
             <div className="flightDetailContainer">
                 <div className="filterHeader">
-                    <div className="property route"> Pune > delhi > Pune</div>
+                    <div className="property route"> {sRoute}</div>
                     <div className="scheduleDate">
-                        <div className="property depart">Depart: 1st Jan 2012</div>
-                        <div className="property return">Return: 4st Jan 2012</div>
+                        <div className="property depart">{departDate}</div>
+                        {returnDate}
                     </div>
                 </div>
                 <div className="contentData">
-                    {aFlightViees}
+                    {aFlightViews}
                 </div>
             </div>
         );

@@ -32,6 +32,11 @@ let TreeViewStore = (function () {
         triggerChange();
     };
 
+    let _handleRefineValueChanged = function (RefineValue) {
+      oComponentProps.setRefineValue(RefineValue.target);
+      triggerChange();
+    };
+
     const _handleSearchButtonClicked = function (oSchedule) {
         oSchedule = oSchedule.target;
         let aData = oComponentProps.getPostData();
@@ -46,7 +51,7 @@ let TreeViewStore = (function () {
                 aDepartFlights.push(oFlight)
             }
 
-            if(oFlight.from.toLowerCase() == oSchedule.destinationCity.toLowerCase()
+            if(oSchedule.isTwoWay && oFlight.from.toLowerCase() == oSchedule.destinationCity.toLowerCase()
                 && (oFlight.to.toLowerCase() == oSchedule.originCity.toLowerCase())
                 &&(Number.parseInt(oFlight.deptTime) >= Date.parse(oSchedule.returnDate.startOf('day')))
                 &&(Number.parseInt(oFlight.deptTime) <= Date.parse(oSchedule.returnDate.endOf('day')))
@@ -57,6 +62,12 @@ let TreeViewStore = (function () {
 
 
         oComponentProps.setDepartFlights(aDepartFlights);
+        oComponentProps.setDepartDate(Date.parse(oSchedule.departDate));
+        oComponentProps.setReturnDate(Date.parse(oSchedule.returnDate));
+        oComponentProps.setDepartStation(oSchedule.originCity);
+        oComponentProps.setDestination(oSchedule.destinationCity);
+        oComponentProps.setIsTwoWay(oSchedule.isTwoWay);
+        oComponentProps.setFlightClass(oSchedule.flightClass);
         oComponentProps.setReturnFlights(aReturnFlights);
         triggerChange();
 
@@ -83,6 +94,10 @@ let TreeViewStore = (function () {
 
         handleSearchButtonClicked: function (oSchedule) {
             _handleSearchButtonClicked(oSchedule);
+        },
+
+        handleRefineValueChanged: function (iRefineValue) {
+            _handleRefineValueChanged(iRefineValue);
         }
 
     }

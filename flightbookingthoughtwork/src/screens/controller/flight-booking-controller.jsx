@@ -53,17 +53,41 @@ class FlightBookingController extends React.Component {
         let aDepartFlights = oComponentProps.getDepartFlights();
         let aReturnFlights = oComponentProps.getReturnFlights();
         let aFilteredFlights = [];
+        let iRefineValue = oComponentProps.getRefineValue();
 
         _.forEach(aDepartFlights, function (oDepartFlight) {
-            let oReturnFlight = _.find(aReturnFlights, {companyCode: oDepartFlight.companyCode});
-            if(!_.isEmpty(oReturnFlight)){
-                aFilteredFlights.push(
-                    {
-                        departFlight: oDepartFlight,
-                        returnFlight: oReturnFlight
-                    }
-                )
+
+            let oReturnFlight = oComponentProps.getIsTwoWay()? _.find(aReturnFlights, {companyCode: oDepartFlight.companyCode}) : {};
+            let flightClass = oComponentProps.getFlightClass();
+          let iPrice;
+          if(flightClass == 'firstClass'){
+            iPrice = oDepartFlight.firstClassPrice;
+          }
+          else if(flightClass == 'business') {
+            iPrice = oDepartFlight.businessPrice;
+          }
+          else {
+            iPrice = oDepartFlight.economyPrice;
+          }
+
+          if(iPrice<=iRefineValue){
+            if(!oComponentProps.getIsTwoWay()){
+
+
+              aFilteredFlights.push(
+                  {
+                    departFlight: oDepartFlight
+                  }
+              )
+            } else if(!_.isEmpty(oReturnFlight)) {
+              aFilteredFlights.push(
+                  {
+                    departFlight: oDepartFlight,
+                    returnFlight: oReturnFlight
+                  }
+              )
             }
+          }
         });
 
         return aFilteredFlights;
@@ -72,8 +96,18 @@ class FlightBookingController extends React.Component {
 
     render() {
         let aFlights = this.getFilteredFlightData();
+        let oComponentProps = this.state.componentProps;
+        let flightClass = oComponentProps.getFlightClass();
 
-        return (
+        let departStation = oComponentProps.getDepartStation();
+        let destination = oComponentProps.getDestination();
+        let departDate = oComponentProps.getDepartDate();
+        let returnDate = oComponentProps.getReturnDate();
+        let isTwoWay = oComponentProps.getIsTwoWay();
+        let iRefineValue = oComponentProps.getRefineValue();
+
+
+      return (
             <div className="flightSearchEngineContainer">
                 <div className="header">
                     <div className="headerText">
@@ -81,8 +115,15 @@ class FlightBookingController extends React.Component {
                     </div>
                 </div>
                 <div className="searchContainer">
-                    <FilterView/>
-                    <FlightDetailView flights = {aFlights}/>
+                    <FilterView refineValue = {iRefineValue}/>
+                    <FlightDetailView
+                        flights = {aFlights}
+                        departStation={departStation}
+                        destination={destination}
+                        departDate={departDate}
+                        returnDate={returnDate}
+                        isTwoWay={isTwoWay}
+                        flightClass = {flightClass}/>
                 </div>
 
             </div>

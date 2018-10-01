@@ -1,10 +1,15 @@
 let TreeViewProps = (function () {
     /**********************Variable Declaration**************************/
     let aPostData = [];
-    let bFlag = false;
-    let iViewId;
     let departFlights;
     let returnFlights;
+    let flightClass = "";
+    let departStation = "";
+    let destination = "";
+    let departDate = null;
+    let returnDate = null;
+    let isTwoWay = false;
+    let refineValue = 20000;
     /**********************All Getter and Setter*************************/
     return {
         getPostData: function () {
@@ -13,21 +18,6 @@ let TreeViewProps = (function () {
 
         setPostData: function (_oData) {
             aPostData = _oData;
-        },
-        getFlag: function () {
-            return bFlag;
-        },
-
-        setFlag: function (_bFlag) {
-            bFlag = _bFlag;
-        },
-
-        getViewId: function () {
-            return iViewId;
-        },
-
-        setViewId: function (_iViewId) {
-            iViewId = _iViewId;
         },
 
         getDepartFlights: function () {
@@ -44,7 +34,63 @@ let TreeViewProps = (function () {
 
         setReturnFlights: function (_returnFlights) {
             returnFlights = _returnFlights;
-        }
+        },
+
+        getFlightClass: function () {
+            return flightClass;
+        },
+
+        setFlightClass: function (_flightClass) {
+          flightClass = _flightClass;
+        },
+
+        getDepartStation: function () {
+            return departStation;
+        },
+
+        setDepartStation: function (_departStation) {
+          departStation = _departStation;
+        },
+
+        getDestination: function () {
+            return destination;
+        },
+
+        setDestination: function (_destination) {
+          destination = _destination;
+        },
+
+        getDepartDate: function () {
+            return departDate;
+        },
+
+        setDepartDate: function (_departDate) {
+          departDate = _departDate;
+        },
+
+        getReturnDate: function () {
+            return returnDate;
+        },
+
+        setReturnDate: function (_returnDate) {
+          returnDate = _returnDate;
+        },
+
+        getIsTwoWay: function () {
+            return isTwoWay;
+        },
+
+        setIsTwoWay: function (_isTwoWay) {
+          isTwoWay = _isTwoWay;
+        },
+
+        getRefineValue: function () {
+            return refineValue;
+        },
+
+        setRefineValue: function (_refineValue) {
+          refineValue = _refineValue;
+        },
 
     }
 })();

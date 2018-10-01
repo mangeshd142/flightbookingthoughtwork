@@ -7,6 +7,20 @@
     height: 80px;
 }
 
+/*html {
+    height: 100%;
+ }
+
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}*/
 .App-header {
     background-color: #222;
     height: 150px;
@@ -28,9 +42,9 @@
 }
 
 .filterContainer .filters {
-    margin: 4px;
+    margin: 0 4px 4px 4px;
     border: 1px solid;
-    border-radius: 2px;
+    border-radius: 0 2px 2px 2px;
 }
 
 .filterContainer .refineFlights {
@@ -61,6 +75,42 @@
     margin: 5px;
 }
 
+.filterContainer .filters .inputContainer .datePicker{
+    width: 100%;
+}
+
+.filterContainer .routeContainer {
+    width: 100%;
+    overflow: hidden;
+}
+
+.filterContainer .routeContainer .oneWay{
+    width: 65px;
+    float: left;
+    margin-left: 4px;
+    margin-top: 5px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-radius: 7px 7px 0 0;
+    cursor: pointer;
+}
+
+.filterContainer .routeContainer .returnWay{
+    width: 65px;
+    float: left;
+    margin-top: 5px;
+    border-left: 1px solid;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-radius: 7px 7px 0 0;
+    cursor: pointer;
+}
+
+.filterContainer .inputContainer .flightClass{
+    width: 100%;
+}
+
 .filterContainer .filters .searchButton {
     margin: 5px;
     border: 1px solid;
@@ -80,6 +130,9 @@
 
 .flightSearchEngineContainer {
     font-size: 14px;
+    max-width: 70%;
+    margin: auto;
+    box-shadow: 0 0 0 1px #000;
 }
 
 .flightSearchEngineContainer .filterHeader {
